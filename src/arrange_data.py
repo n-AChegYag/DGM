@@ -4,8 +4,8 @@ from tqdm import tqdm
 
 if __name__ == '__main__':
 
-    RGB_PATH = '/home/ps/disk12t/ACY/AD/f-anogan-eye-latest/data/3150FinalRGBBase'
-    SAVE_PATH = '/home/ps/disk12t/ACY/AD/MIA/data/eye/N'
+    RGB_PATH = '/home/ps/disk12t/ACY/AD_DGM/data/normal/3150FinalRGBBase'
+    SAVE_PATH = '/home/ps/disk12t/ACY/AD_DGM/data/eye/N'
     
     all_images = os.listdir(RGB_PATH)
     for image in tqdm(all_images):

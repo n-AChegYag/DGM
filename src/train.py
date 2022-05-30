@@ -23,8 +23,8 @@ if __name__ == '__main__':
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = True
 
-    DATA_PATH = '/home/ps/disk12t/ACY/AD/MIA/data/eye'
-    LOG_PATH = '/home/ps/disk12t/ACY/AD/MIA/log/220515_2'
+    DATA_PATH = '/home/ps/disk12t/ACY/AD_DGM/data/eye'
+    LOG_PATH = '/home/ps/disk12t/ACY/AD_DGM/log/220530'
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     loss_dict = {'loss_1':[], 'loss_2':[]}
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     best_loss_2 = np.inf
 
     transform = transforms.Compose([
-        transforms.Resize((384,384)),
+        transforms.Resize((224,224)),
         transforms.ToTensor()
     ])
 

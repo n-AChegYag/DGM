@@ -18,13 +18,13 @@ if __name__ == '__main__':
 
     os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 
-    DATA_PATH = '/home/ps/disk12t/ACY/AD/MIA/data/data'
-    LOG_PATH = '/home/ps/disk12t/ACY/AD/MIA/data/pred'
-    CHECKPOINT_PATH = '/home/ps/disk12t/ACY/AD/MIA/log/220515_1/model.pth.tar'
-    z_p_path = '/home/ps/disk12t/ACY/AD/MIA/data/pred/z_p'
-    z_pp_path = '/home/ps/disk12t/ACY/AD/MIA/data/pred/z_pp'
-    y_p_path = '/home/ps/disk12t/ACY/AD/MIA/data/pred/y_p'
-    a_path = '/home/ps/disk12t/ACY/AD/MIA/data/pred/a'
+    DATA_PATH = '/home/ps/disk12t/ACY/AD_DGM/data/test_0530'
+    LOG_PATH = '/home/ps/disk12t/ACY/AD_DGM/data/pred'
+    CHECKPOINT_PATH = '/home/ps/disk12t/ACY/AD_DGM/log/220530/model.pth.tar'
+    z_p_path = '/home/ps/disk12t/ACY/AD_DGM/data/pred/z_p'
+    z_pp_path = '/home/ps/disk12t/ACY/AD_DGM/data/pred/z_pp'
+    y_p_path = '/home/ps/disk12t/ACY/AD_DGM/data/pred/y_p'
+    a_path = '/home/ps/disk12t/ACY/AD_DGM/data/pred/a'
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -59,6 +59,13 @@ if __name__ == '__main__':
     D_F.to(device)
     D_J.to(device)
     D.to(device)
+
+    E_G.eval()
+    E_F.eval()
+    D_G.eval()
+    D_F.eval()
+    D_J.eval()
+    D.eval()
 
     total_num = len(eye_dataset.imgs)
     for i in tqdm(range(total_num)):

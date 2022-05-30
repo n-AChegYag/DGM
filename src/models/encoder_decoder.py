@@ -40,7 +40,7 @@ class Decoder_j(nn.Module):
 
         # MLP to generate AdaIN parameters
         self.dec = Decoder_j_()
-        self.mlp = MLP(12*12*512, self.get_num_adain_params(self.dec), 256, 3, norm='none', activ='relu')
+        self.mlp = MLP(7*7*512, self.get_num_adain_params(self.dec), 256, 3, norm='none', activ='relu')
 
     def forward(self, content, style):
         adain_params = self.mlp(style)

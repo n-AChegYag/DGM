@@ -6,10 +6,10 @@ from tqdm import tqdm
 
 if __name__ == '__main__':
 
-    PRED_PATH = '/home/ps/disk12t/ACY/AD/MIA/data/pred/y_p'
-    IMAGE_PATH = '/home/ps/disk12t/ACY/AD/MIA/data/all_a'
-    REC_PATH = '/home/ps/disk12t/ACY/AD/MIA/data/result/rec'
-    DIFF_PATH = '/home/ps/disk12t/ACY/AD/MIA/data/result/dif'
+    PRED_PATH = '/home/ps/disk12t/ACY/AD_DGM/data/pred/y_p'
+    IMAGE_PATH = '/home/ps/disk12t/ACY/AD_DGM/data/test_0530/Img_manualAb'
+    REC_PATH = '/home/ps/disk12t/ACY/AD_DGM/data/result/rec'
+    DIFF_PATH = '/home/ps/disk12t/ACY/AD_DGM/data/result/dif'
 
     for i in tqdm(os.listdir(PRED_PATH)):
         img = cv2.imread(os.path.join(IMAGE_PATH, i))
