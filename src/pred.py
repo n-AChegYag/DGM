@@ -5,6 +5,7 @@ from torchvision.datasets import ImageFolder
 from torchvision import transforms
 from torchvision.utils import save_image
 from tqdm import tqdm
+import time
 
 def get_sample(dataset, index):
     out = torch.zeros((1,1,224,224))
@@ -68,17 +69,21 @@ if __name__ == '__main__':
     D.eval()
 
     total_num = len(eye_dataset.imgs)
+    start_time = time.perf_counter()
     for i in tqdm(range(total_num)):
         image, fname = get_sample(eye_dataset, i)
         image = (image - 0.5) * 2
         image = image.to(device)
         c_z = E_G(image)
         y_p = D_G(c_z)
-        c_s = E_F(image)
-        a = D_F(c_s)
-        z_pp = D_J(c_z, c_s)
-        z_p = y_p + a
-        save_image(z_pp / 2 + 0.5, os.path.join(z_p_path, fname))
-        save_image(z_p / 2 + 0.5, os.path.join(z_pp_path, fname))
+        # c_s = E_F(image)
+        # a = D_F(c_s)
+        # z_pp = D_J(c_z, c_s)
+        # z_p = y_p + a
+        # save_image(z_pp / 2 + 0.5, os.path.join(z_p_path, fname))
+        # save_image(z_p / 2 + 0.5, os.path.join(z_pp_path, fname))
         save_image(y_p / 2 + 0.5, os.path.join(y_p_path, fname))
-        save_image(a, os.path.join(a_path, fname))
+        # save_image(a, os.path.join(a_path, fname))
+    end_time = time.perf_counter()
+    time_spent = end_time - start_time
+    print(f'Time used: {time_spent}')

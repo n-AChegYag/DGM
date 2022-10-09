@@ -3,4 +3,4 @@ data/
 temp/
 result/
 log/
-src/try.py
+**/try.py
